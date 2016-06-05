@@ -3,48 +3,58 @@
     <!-- <h2 style="text-align:center">Under construction</h2> -->
     <!-- <input type="text" ng-model="search" placeholder="What photos do you want to search for?" class="form-control"> -->
     <h2>Under construction</h2>
-    <br><br>
+    <br>
     <input type="text" ng-model="search" placeholder="what do you want to search for?" class="form-control">
     <button class="btn btn-primary" ng-click="setSearch()">Search</button>
     <p>Current search: {{search}}</p>
-    <p style="text-align:center">{{test}}</p>
+    <p style="text-align:center">Status: {{searching}}</p>
   </div>
   <!-- <p style="text-align:center">{{photos}}</p> -->
   
   <div class="row text-center">
-    <p>Make sure to click 'Search' before clicking 'Get photo'</p>
+    <!-- <p>Make sure to click 'Search' before clicking 'Get photo'</p> -->
     <button class="btn btn-primary" ng-click="getPhoto()">Get photo</button>
   </div>
 
-  <div class="row text-center" style="margin:10px">
+  <!-- <div class="row text-center" style="margin:10px">
     
     <img src="{{photo}}">
     <p>{{title}}</p>
+    <p>{{photoDateTaken}}</p>
     
+  </div> -->
+  <div class="container fixedHeightContainer text-center">
+    <div layout="row" layout-align="center" style="margin:8px; width:350px; overflow:auto;" ng-repeat='card in cards.slice().reverse()'>
+      <md-card>
+        <md-card-content>
+          <h2 class="md-title">{{card.title}}</h2>
+          <p>
+            <img src="{{card.photo}}" height="300" width="300">
+          </p>
+          <p>
+            {{card.photoDateTaken}}
+          </p> 
+        <md-card-content>
+      </md-card>
+      <br>
+    </div>
   </div>
 
-  <!-- <div class="row text-center" style="margin:10px">
-   <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
+  <!-- <div class="row text-center" id="cards" style="margin:10px">
+   <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
         <md-card-title>
           <md-card-title-text>
-            <span class="md-headline"><img src="{{car}}" height="125" width="125"></span>
-            <span class="md-subhead">{{title}}</span>
+            <span class="md-headline">{{title}}</span>
+            <span class="md-subhead">{{photoDateTaken}}</span>
           </md-card-title-text>
+          <md-card-media>
+            <div class="md-media-lg card-media"><img src="{{photo}}"></div>
+          </md-card-media>
         </md-card-title>
-        <md-card-content layout="row" layout-align="space-between">
-          <div class="md-media-xl card-media"></div>
-          <md-card-actions layout="column">
-            <md-button class="md-icon-button" aria-label="Favorite">
-              <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Settings">
-              <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-            </md-button>
-            <md-button class="md-icon-button" aria-label="Share">
-              <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
-            </md-button>
-          </md-card-actions>
-        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Action 1</md-button>
+          <md-button>Action 2</md-button>
+        </md-card-actions>
       </md-card>
   </div> -->
 
