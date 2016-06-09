@@ -13,7 +13,7 @@ angular.module('aggieFeedActivitiesApp')
     //STEP 2 (refactor ajax call to a service):
     $scope.search;
     $scope.cards = [];
-    var photos = {};
+    var photos = [];
     $scope.searching = 'Status: awaiting query';
     var numCards = 0;
 
@@ -24,19 +24,18 @@ angular.module('aggieFeedActivitiesApp')
     $scope.setSearch = function() {
       //grab 50 pictures from search query sorted by relevance
       $scope.searching = 'Status: searching... <img src="images/loading.gif" height="18" width="18">';
-      
+
       getPhotosService.getPhotos(function(data){
         photos = data;
-        $scope.searching = 'Status: search complete <img src="images/check.png" height="13" width=13">';
+        $scope.searching = 'Status: search complete ' + '<img src="images/check.png" height="10" width=10">';
       }, $scope.search);
     };
 
     $scope.getPhoto = function() {
       var random = getRandomInt(0, photos.length);
       $scope.cards.push({});
-      $scope.cards[numCards].url = photos[random].url_m;
-      $scope.cards[numCards].title = photos[random].title;
-      $scope.cards[numCards].dateTaken = photos[random].datetaken;
+      $scope.cards[numCards].url = photos[random].activity.object.contentImage.dimensions.normal.url;
+      $scope.cards[numCards].title = photos[random].activity.object.content;
       numCards += 1;
     };
 

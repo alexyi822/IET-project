@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
+
+    <script src="https://use.fontawesome.com/e1e18acef0.js"></script>
+    
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
@@ -21,44 +24,47 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+    <div id="wrapper">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+      <!-- Add your site or application content here -->
+      <div class="header">
+        <div class="navbar navbar-default" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
 
-            <a class="navbar-brand" href="#/">aggieFeedActivities</a>
-          </div>
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+              <a class="navbar-brand" href="#/">aggieFeedActivities</a>
+            </div>
 
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
+            <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#/">Home</a></li>
+                <li><a ng-href="#/about">About</a></li>
+                <li><a ng-href="#/">Contact</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p style="text-align:center">Aggie Feed project for UCD IET</p>
+      <div class="container" style="padding-top: 85px;">
+      <div ng-view=""></div>
       </div>
-    </div>
 
+      <div class="footer">
+        <div class="container">
+          <p style="text-align:center">Aggie Feed project for UCD IET</p>
+        </div>
+      </div>
+
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -94,5 +100,7 @@
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/services/getphotosservice.js"></script>
         <!-- endbuild -->
+
+
 </body>
 </html>
