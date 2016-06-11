@@ -11,6 +11,6 @@
 angular.module('aggieFeedActivitiesApp')
   .directive('myDirective', function () {
     return {
-      template: '<p>Date taken: {{card.date}}</p>',
+      templateUrl: 'views/myDirective.html'
     };
   });

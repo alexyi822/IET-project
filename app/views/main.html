@@ -1,3 +1,22 @@
+ <script>
+   $(document).ready(function () {
+          $(".nav li").removeClass("active");
+          $('#home').addClass('active');
+      });
+
+   // for custom directive like button
+   function changeLike() {
+      if ($("#like").hasClass("fa-heart-o")){
+        $("#like").removeClass("fa-heart-o");
+        $("#like").addClass("fa-heart");
+      }
+      else {
+        $("#like").removeClass("fa-heart");
+        $("#like").addClass("fa-heart-o");
+      }
+     };
+ </script>
+
 <ng-controller="MainCtrl">
 
   <!--Search bar, search button, get photo button -->
