@@ -1,39 +1,40 @@
-<div class="container" ng-controller="MainCtrl">
-  <div class="row text-center" >
-    <!-- <h2>Under construction</h2> -->
-    <input type="text" ng-model="search" placeholder="what do you want to search for?" class="form-control">
-    <md-button class="md-raised md-primary" ng-click="setSearch()" style="margin-top:10px;background-color:#106cc8;">Search</md-button>
-    <br>Current search: {{search}}
+<ng-controller="MainCtrl">
 
-    <p ng-bind-html="searching" style="text-align:center">{{searching}}</p>
-  </div>
-  
-  <div class="row text-center">
-    <!-- <p>Make sure to click 'Search' before clicking 'Get photo'</p> -->
+  <!--Search bar, search button, get photo button -->
+  <div class="row text-center" style="padding-top: 25px;">
+    <h2>What do you want to see?</h2>
+    <br>
+    <input type="text" ng-model="search" placeholder="enter search..." class="form-control" style="width: 75%; margin: auto; text-align: center;">
+
+    <md-button class="md-raised md-primary" ng-click="setSearch()" style="margin: 10px; background-color:#106cc8;">Search</md-button>
+    <br>
+    <span>Current search: {{search}}</span>
+    <br>
+    <span ng-bind-html="searching">{{searching}}</span>
+    <br>
     <md-button class="md-raised md-primary" ng-click="getPhoto()" style="background-color:#106cc8;">Get photo</md-button>
   </div>
 
-  <div layout="row" layout-align="center">
-    <div layout="column">
-      <md-content class="fixedHeightContainer text-center"flex layout-padding>
-        <div layout="row" layout-align="center" style="margin:5px;" ng-repeat="card in cards.slice().reverse()">
-          <md-card>
-            <md-card-content>
-              <h2 class="md-title">{{card.title}}</h2>
-              <p>
-                <img src="{{card.url}}" height="325" width="325">
-              </p>
-              
-            </md-card-content>
-            <md-card-content>
-              <!-- custom directive displays date under picture in card -->
-              <div my-directive></div my-directive>
-            </md-card-content>
-          </md-card>
-          <br>
-        </div>
-      </md-content>
-    </div>
-  </div>
+  <!-- "feed" -->
+  <!-- <div id="cards" style="height: 60%; overflow: auto;"> -->
+    <div class="row">
+      <md-content class="text-center" ng-repeat="card in cards.slice().reverse()" style="width: 400px; margin: auto;" flex>
+        <md-card>
+          <md-card-content>
+            <h2 class="md-title">{{card.title}}</h2>
+            <img src="{{card.url}}" height="325" width="325">
+          </md-card-content>
 
-</div>
+          <md-card-content>
+            <div my-directive></div>
+          </md-card-content>
+
+        </md-card>
+      </md-content>
+
+    </div>
+  <!-- </div> -->
+
+
+
+</ng-controller>

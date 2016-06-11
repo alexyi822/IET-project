@@ -25,7 +25,10 @@
 
       $scope.setSearch = function() {
         //grab 50 pictures from search query sorted by relevance
+        
+
         $scope.searching = 'Status: searching... <img src="images/loading.gif" height="18" width="18">';
+
 
         getPhotosService.getPhotos(function(data){
           photos = [];
