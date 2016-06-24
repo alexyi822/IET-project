@@ -19,3 +19,17 @@
   height: 50px;
   z-index: 1;
 }
+
+/* animation for when new photos are retrieved */
+.repeated-item.ng-enter {
+  transition: all 0.25s linear;
+  opacity: 0;
+  /*height: 0px;*/
+
+}
+
+
+.repeated-item.ng-enter.ng-enter-active {
+  opacity: 1;
+  /*height: 325px;*/
+}

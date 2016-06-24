@@ -5,16 +5,17 @@
       });
 
    // for custom directive like button
-   function changeLike() {
-      if ($("#like").hasClass("fa-heart-o")){
-        $("#like").removeClass("fa-heart-o");
-        $("#like").addClass("fa-heart");
-      }
-      else {
-        $("#like").removeClass("fa-heart");
-        $("#like").addClass("fa-heart-o");
-      }
-     };
+   // function changeLike() {
+   //    if ($("#like").hasClass("fa-heart-o")){
+   //      $("#like").removeClass("fa-heart-o");
+   //      $("#like").addClass("fa-heart");
+   //      card.liked = true;
+   //    }
+   //    else {
+   //      $("#like").removeClass("fa-heart");
+   //      $("#like").addClass("fa-heart-o");
+   //    }
+   //   };
  </script>
 
 <ng-controller="MainCtrl">
@@ -32,27 +33,51 @@
     <span ng-bind-html="searching">{{searching}}</span>
     <br>
     <md-button class="md-raised md-primary" ng-click="getPhoto()" style="background-color:#106cc8;">Get photo</md-button>
+    <br>
+    <p>
+      Show:
+      <select style="text-center" ng-model="filterOption">
+      <option value="all">All</option>
+      <option value="liked">Saved</option>
+      </select>
+    </p>
+    
   </div>
 
   <!-- "feed" -->
   <!-- <div id="cards" style="height: 60%; overflow: auto;"> -->
-    <div class="row">
-      <md-content class="text-center" ng-repeat="card in cards.slice().reverse()" style="width: 400px; margin: auto;" flex>
+    <div class="row" ng-switch on="filterOption">
+ 
+
+      <md-content class="text-center repeated-item" ng-repeat="card in cards.slice().reverse()" style="width: 400px; margin: auto;" flex ng-switch-when="all">
         <md-card>
           <md-card-content>
             <h2 class="md-title">{{card.title}}</h2>
             <img src="{{card.url}}" height="325" width="325">
-          </md-card-content>
-
-          <md-card-content>
-            <div my-directive></div>
+            <!-- <div style="margin-top: 5px;" my-directive></div> -->
+            <md-checkbox ng-model="card.liked" aria-label="save box" class="md-primary" style="margin-top: 5px;">
+              Save
+            </md-checkbox>
           </md-card-content>
 
         </md-card>
       </md-content>
 
-    </div>
-  <!-- </div> -->
+      <md-content class="text-center repeated-item" ng-repeat="card in cards.slice().reverse() | filter: {liked: 'true'}" style="width: 400px; margin: auto;" flex ng-switch-when="liked">
+        <md-card>
+          <md-card-content>
+            <h2 class="md-title">{{card.title}}</h2>
+            <img src="{{card.url}}" height="325" width="325">
+            <!-- <div style="margin-top: 5px;" my-directive></div> -->
+            <md-checkbox ng-model="card.liked" aria-label="save box" class="md-primary" style="margin-top: 5px;">
+              Save {{card.liked}}
+            </md-checkbox>
+          </md-card-content>
+
+        </md-card>
+      </md-content>
+
+  </div>
 
 
 

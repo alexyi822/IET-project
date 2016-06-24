@@ -17,6 +17,7 @@
       $scope.cards = [];
       var photos = [];
       $scope.searching = 'Status: awaiting query';
+      $scope.filterOption = "all";
       // var numCards = 0;
 
       function getRandomInt(min, max) {
@@ -25,10 +26,7 @@
 
       $scope.setSearch = function() {
         //grab 50 pictures from search query sorted by relevance
-        
-
         $scope.searching = 'Status: searching... <img src="images/loading.gif" height="18" width="18">';
-
 
         getPhotosService.getPhotos(function(data){
           photos = [];
@@ -42,7 +40,8 @@
         $scope.cards.push({
           "url" : photos[random].activity.object.contentImage.dimensions.normal.url,
           "title" : photos[random].activity.object.content,
-          "date" : photos[random].activity.object.date
+          "date" : photos[random].activity.object.date,
+          "liked" : false
         });
       };
 
