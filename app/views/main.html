@@ -32,13 +32,28 @@
     <br>
     <span ng-bind-html="searching">{{searching}}</span>
     <br>
+    <!-- <md-button class="md-raised md-primary" ng-click="showField()" style="background-color:#106cc8;">Create album</md-button> -->
+    <!-- <my-directive ng-show="createAlbum"></my-directive> -->
+    <!-- <ng-hide="createAlbum" my-directive></my-directive> -->
     <md-button class="md-raised md-primary" ng-click="getPhoto()" style="background-color:#106cc8;">Get photo</md-button>
+    <!-- <md-button class="md-raised md-primary" ng-click="clearSaved()" ng-hide="createAlbum" style="background-color:#106cc8;">Clear Saved</md-button> -->
     <br>
+    <md-button class="md-raised md-primary" ng-click="showField()" style="background-color:#78ab46;">Create album</md-button>
+    <my-directive ng-show="createAlbum"></my-directive>
+    <md-button class="md-raised md-warn" ng-click="clearFeed()" ng-hide="createAlbum">Clear feed</md-button>
+    <md-button class="md-raised md-warn" ng-click="clearSaved()" ng-hide="createAlbum">Clear Saved</md-button>
     <p>
       Show:
       <select style="text-center" ng-model="filterOption">
       <option value="all">All</option>
       <option value="liked">Saved</option>
+      <option value="album">Album</option>
+      <!-- <option ng-repeat="album in albums" value="{{album.name}}">{{album.name}}</option> -->
+      </select>
+
+      Album:
+      <select style="text-center" ng-model="selectedAlbum">
+      <option ng-repeat="album in albums" value="{{album.name}}">{{album.name}}</option>
       </select>
     </p>
     
@@ -46,9 +61,7 @@
 
   <!-- "feed" -->
   <!-- <div id="cards" style="height: 60%; overflow: auto;"> -->
-    <div class="row" ng-switch on="filterOption">
- 
-
+    <div class="row" ng-switch on="filterOption"> 
       <md-content class="text-center repeated-item" ng-repeat="card in cards.slice().reverse()" style="width: 400px; margin: auto;" flex ng-switch-when="all">
         <md-card>
           <md-card-content>
@@ -71,6 +84,45 @@
             <!-- <div style="margin-top: 5px;" my-directive></div> -->
             <md-checkbox ng-model="card.liked" aria-label="save box" class="md-primary" style="margin-top: 5px;">
               Save {{card.liked}}
+            </md-checkbox>
+          </md-card-content>
+
+        </md-card>
+      </md-content>
+
+      <md-content class="text-center repeated-item" ng-repeat="card in albums[0].cards.slice().reverse()" style="width: 400px; margin: auto;" flex ng-switch-when="albums[0].name">
+        <md-card>
+          <md-card-content>
+            <h2 class="md-title">{{card.title}}</h2>
+            <img src="{{card.url}}" height="325" width="325">
+            <!-- <div style="margin-top: 5px;" my-directive></div> -->
+          </md-card-content>
+
+        </md-card>
+      </md-content>
+
+      <md-content class="text-center repeated-item" ng-repeat="card in albums[0].cards.slice().reverse()" ng-if="selectedAlbum == albums[0].name" style="width: 400px; margin: auto;" flex ng-switch-when="album">
+        <md-card>
+          <md-card-content>
+            <h2 class="md-title">{{card.title}}</h2>
+            <img src="{{card.url}}" height="325" width="325">
+            <!-- <div style="margin-top: 5px;" my-directive></div> -->
+            <md-checkbox ng-model="card.liked" aria-label="save box" class="md-primary" style="margin-top: 5px;">
+              Save
+            </md-checkbox>
+          </md-card-content>
+
+        </md-card>
+      </md-content>
+
+      <md-content class="text-center repeated-item" ng-repeat="card in albums[1].cards.slice().reverse()" ng-if="selectedAlbum == albums[1].name" style="width: 400px; margin: auto;" flex ng-switch-when="album">
+        <md-card>
+          <md-card-content>
+            <h2 class="md-title">{{card.title}}</h2>
+            <img src="{{card.url}}" height="325" width="325">
+            <!-- <div style="margin-top: 5px;" my-directive></div> -->
+            <md-checkbox ng-model="card.liked" aria-label="save box" class="md-primary" style="margin-top: 5px;">
+              Save
             </md-checkbox>
           </md-card-content>
 

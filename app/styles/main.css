@@ -33,3 +33,7 @@
   opacity: 1;
   /*height: 325px;*/
 }
+
+.md-button {
+  width: 13%;
+}
