@@ -5,10 +5,31 @@ $(document).ready(function () {
   });
 </script>
 
-<div class="row" style="margin-top: 50px;">
-  <ul style="list-style-type:none;" class="text-center">
-    <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:atyi@ucdavis.edu"> atyi@ucdavis.edu</a></li>
-    <li><i class="fa fa-mobile" aria-hidden="true"></i> 510-789-7844</li>
-    <li><i class="fa fa-github" aria-hidden="true"></i><a href="https://www.github.com/alexyi822"> alexyi822</a></li>
-  </u>
+<div class="row" ng-controller="CommentCtrl as com" ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height class="text-center" md-stretch-tabs="always">
+      <md-tab id="info">
+        <md-tab-label>Contact Info</md-tab-label>
+        <md-tab-body>
+          <div style="margin-top: 50px;">
+            <ul style="list-style-type:none;" class="text-center">
+              <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="mailto:atyi@ucdavis.edu"> atyi@ucdavis.edu</a></li>
+              <li><i class="fa fa-mobile" aria-hidden="true"></i> 510-789-7844</li>
+              <li><i class="fa fa-github" aria-hidden="true"></i><a href="https://www.github.com/alexyi822"> alexyi822</a></li>
+            </u>
+          </div>
+        <md-tab-body>
+      </md-tab>
+
+      <md-tab id="comments">
+        <md-tab-label>Comments</md-tab-label>
+        <md-tab-body>
+          
+          <comment-form></comment-form>
+
+        <md-tab-body>
+      </md-tab>
+
+    </md-tabs>
+  </md-content>
 </div>

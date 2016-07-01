@@ -1,0 +1,22 @@
+<div style="margin: 20px;">
+
+  <div>
+    <ul style="list-style: none;" ng-repeat="review in comments.slice().reverse()">
+      <li>{{review.name}}</li>
+      <li>{{review.email}}</li>
+      <li>{{review.text}}</li>
+      <hr>
+    </ul>
+
+  </div>
+
+  <form novalidate class="simple-form">
+    Name: <input type="text" ng-model="newComment.name" required> <br>
+    E-mail: <input type="email" ng-model="newComment.email" required> <br>
+    Comment:
+    <textarea name="userComment" ng-model="newComment.text" cols="40" rows="2" required></textarea>
+    <br>
+    <input type="submit" ng-click="com.save(newComment)" value="save" required>
+    <br>
+  </form>
+</div>

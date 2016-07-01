@@ -42,6 +42,8 @@
           })
           .when('/contact',{
             templateUrl: 'views/contact.html',
+            controller: 'CommentCtrl',
+            controllerAs: 'com'
           })
           .otherwise({
             redirectTo: '/'
